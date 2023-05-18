@@ -11,7 +11,7 @@ public class Person {
         this.name = name;
         this.surname = surname;
         this.age = OptionalInt.of(age);
-        ;
+
     }
 
     public Person(String name, String surname) {
@@ -59,13 +59,14 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, adress);
+        return Objects.hash(name, surname, OptionalInt.of(0), adress);
     }
 
     public PersonBuilder newChildBuilder() {
         return new PersonBuilder()
                 .setSurname(this.surname)
-                .setAddress(this.adress);
+                .setAddress(this.adress)
+                .setAge(0);
     }
 
     @Override
@@ -73,7 +74,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", age=" + age.getAsInt() +
                 ", adress='" + adress + '\'' +
                 '}';
     }

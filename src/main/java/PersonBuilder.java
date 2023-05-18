@@ -1,19 +1,23 @@
+import java.util.OptionalInt;
+
 public class PersonBuilder{
     private String name;
     private String surname;
-    private int age;
+    private OptionalInt age;
     private String address;
 
     public Person build() {
         Person person;
         if (surname == null || name == null)
             throw new IllegalStateException("введите значение");
-        if (age > 0) {
-            person = new Person(name, surname, age);
+        if (age.isPresent()) {
+            person = new Person(name, surname,  age.getAsInt());
         } else {
             person = new Person(name, surname);
         }
-        person.setAddress(address);
+        if (address != null) {
+            person.setAddress(address);
+        }
         return person;
     }
 
@@ -29,7 +33,7 @@ public class PersonBuilder{
 
     public PersonBuilder setAge(int age) {
         if (age < 0) throw new IllegalArgumentException("неверный возраст");
-        this.age = age;
+        this.age = OptionalInt.of(age);
         return this;
     }
 
