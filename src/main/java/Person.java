@@ -38,9 +38,9 @@ public class Person {
         return surname;
     }
 
-    public OptionalInt getAge() {
+    public int getAge() {
 
-        return age;
+        return age.getAsInt();
     }
 
     public String getAddress() {
