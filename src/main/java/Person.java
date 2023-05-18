@@ -38,9 +38,9 @@ public class Person {
         return surname;
     }
 
-    public int getAge() {
+    public OptionalInt getAge() {
 
-        return age.getAsInt();
+        return OptionalInt.empty();
     }
 
     public String getAddress() {
@@ -74,7 +74,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age.getAsInt() +
+                ", age=" + age +
                 ", adress='" + adress + '\'' +
                 '}';
     }
