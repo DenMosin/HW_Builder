@@ -10,10 +10,10 @@ public class PersonBuilder{
         Person person;
         if (surname == null || name == null)
             throw new IllegalStateException("введите значение");
-        if (age.isPresent()) {
-            person = new Person(name, surname,  age.getAsInt());
-        } else {
+        if (age == null) {
             person = new Person(name, surname);
+        } else {
+            person = new Person(name, surname, age.getAsInt());
         }
         if (address != null) {
             person.setAddress(address);

@@ -40,7 +40,7 @@ public class Person {
 
     public OptionalInt getAge() {
 
-        return OptionalInt.empty();
+        return age;
     }
 
     public String getAddress() {
@@ -74,7 +74,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + age +
+                ", age=" + (age !=null ? age.getAsInt(): "Возраст не известен") +
                 ", adress='" + adress + '\'' +
                 '}';
     }
