@@ -17,6 +17,7 @@ public class Person {
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
+        this.age = getAge();
     }
 
     public boolean hasAge() {
@@ -40,7 +41,7 @@ public class Person {
 
     public OptionalInt getAge() {
 
-        return age;
+        return OptionalInt.empty();
     }
 
     public String getAddress() {
@@ -74,7 +75,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age=" + (age !=null ? age.getAsInt(): "Возраст не известен") +
+                ", age=" + (age.isPresent()?age.getAsInt():age) +
                 ", adress='" + adress + '\'' +
                 '}';
     }

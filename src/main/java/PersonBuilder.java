@@ -3,17 +3,17 @@ import java.util.OptionalInt;
 public class PersonBuilder{
     private String name;
     private String surname;
-    private OptionalInt age;
+    private OptionalInt age = OptionalInt.empty();
     private String address;
 
     public Person build() {
         Person person;
         if (surname == null || name == null)
             throw new IllegalStateException("введите значение");
-        if (age == null) {
-            person = new Person(name, surname);
-        } else {
+        if (age.isPresent()) {
             person = new Person(name, surname, age.getAsInt());
+        } else {
+            person = new Person(name, surname);
         }
         if (address != null) {
             person.setAddress(address);
