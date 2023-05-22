@@ -17,7 +17,7 @@ public class Person {
     public Person(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.age = getAge();
+        this.age = OptionalInt.empty();
     }
 
     public boolean hasAge() {
@@ -41,7 +41,7 @@ public class Person {
 
     public OptionalInt getAge() {
 
-        return OptionalInt.empty();
+        return age;
     }
 
     public String getAddress() {
